@@ -5,10 +5,10 @@ import styles from './ContactList.module.css'
 const ContactList = ({ contacts, removeContact }) => {
   return (
     <ul className={styles['contact-list']}>
-      {contacts.map(contact => (
-        <li key={contact.id}>
-          {contact.name}: {contact.number}
-          <button onClick={_ => removeContact(contact.id)}>Delete</button>
+      {contacts.map(({id, name, number}) => (
+        <li key={id}>
+          {name}: {number}
+          <button onClick={_ => removeContact(id)}>Delete</button>
         </li>
       ))}
     </ul>
@@ -18,6 +18,10 @@ const ContactList = ({ contacts, removeContact }) => {
 export default ContactList
 
 ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+  contacts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    number: PropTypes.string
+  })).isRequired,
   removeContact: PropTypes.func.isRequired
 };

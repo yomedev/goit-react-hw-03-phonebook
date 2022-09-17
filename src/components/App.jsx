@@ -30,10 +30,10 @@ export const App = () => {
   }
 
   const removeContact = (contactId) => {
-    setContacts(contacts.filter(contact => contact.id !== contactId))
+    setContacts(contacts.filter(({ id }) => id !== contactId))
   }
 
-  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()))
+  const filteredContacts = contacts.filter(({ name }) => name.toLowerCase().includes(filter.toLowerCase()))
 
   return (
     <div

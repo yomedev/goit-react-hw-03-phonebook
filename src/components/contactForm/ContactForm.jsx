@@ -5,12 +5,14 @@ import styles from './ContactForm.module.css'
 const ContactForm = ({ addContact }) => {
   const [name, setName] = useState('')
   const [number, setNumber] = useState('')
+  
   const clickHandler = e => {
     e.preventDefault()
     addContact(name, number)
     setName('')
     setNumber('')
   }
+
   return (
     <form className={styles['contact-form']}>
       <div>
